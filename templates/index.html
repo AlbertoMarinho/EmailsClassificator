@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisador de E-mails</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="container">
+        <header>
+            <h1>Analisador de E-mails</h1>
+            <p>Cole o conteúdo de um e-mail ou envie um arquivo (.txt ou .pdf) para classificá-lo.</p>
+        </header>
+
+        <form id="analisador-form" class="analisador">
+            <textarea id="email-input" placeholder="Cole o texto do e-mail aqui..."></textarea>
+            
+            <div class="divisor">
+                <span>OU</span>
+            </div>
+
+            <input type="file" id="file-input" accept=".txt,.pdf">
+            
+            <button type="submit" id="analisar-btn">Analisar</button>
+        </form>
+
+        <section id="resultado" class="hidden">
+            <h2>Resultado da Análise</h2>
+            <div class="card-resultado">
+                <h3>Classificação</h3>
+                <p id="classificacao-output"></p>
+            </div>
+            <div class="card-resultado">
+                <h3>Resposta Sugerida</h3>
+                <p id="resposta-output"></p>
+            </div>
+        </section>
+
+        <div id="loader" class="hidden">
+            <div class="spinner"></div>
+            <p>Analisando, por favor aguarde...</p>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
