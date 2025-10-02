@@ -9,7 +9,7 @@ from werkzeug.utils import secure_filename
 load_dotenv()
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
-UPLOAD_FOLDER = 'uploads'
+UPLOAD_FOLDER = '/tmp'
 ALLOWED_EXTENSIONS = {'txt', 'pdf'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
