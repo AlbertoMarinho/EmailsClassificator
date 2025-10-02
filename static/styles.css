@@ -126,4 +126,5 @@ input[type="file"] {
     border-radius: 5px;
     color: #ffffff;
     cursor: pointer;
+    box-sizing: border-box;
 }

@@ -76,17 +76,33 @@ def analisar():
 
 def classificar_e_responder(texto):
     prompt_para_ia = f"""
-    Você é um assistente virtual eficiente, especialista em triagem de e-mails. Sua tarefa é analisar o e-mail fornecido e executar duas ações:
-    1. Classificar o e-mail como "Produtivo" ou "Improdutivo".
-    2. Sugerir um rascunho de resposta curta e profissional PARA SER ENVIADA AO REMETENTE do e-mail, que seja adequada à classificação.
+    Você é um assistente virtual especializado em triagem de e-mails.
+    Sua tarefa é analisar o e-mail fornecido e executar duas ações obrigatórias:
 
-    Aqui estão exemplos de como você deve se comportar:
-    - Exemplo 1: Se o e-mail for um simples agradecimento (Improdutivo), uma resposta sugerida apropriada seria "Ficamos felizes em ajudar! Atenciosamente.".
-    - Exemplo 2: Se o e-mail for uma solicitação de status de um projeto (Produtivo), uma resposta sugerida apropriada seria "Prezado(a), recebemos sua solicitação e já estamos verificando o status. Retornaremos o mais breve possível. Atenciosamente.".
+    Classificação → Determine se o e-mail é:
+    "Produtivo" (quando exige ação, decisão, resposta ou envolve trabalho/negócio relevante).
+    "Improdutivo" (quando é apenas agradecimento, confirmação simples, mensagem social ou sem necessidade de ação).
 
-    Analise o e-mail abaixo seguindo estritamente estas regras.
+    Resposta sugerida → Redija um rascunho de resposta curto, direto e profissional, adequado à classificação:
+    Para e-mails Produtivos: uma resposta que reconheça a solicitação e indique próximos passos.
+    Para e-mails Improdutivos: uma resposta educada e breve de encerramento.
 
-    Formate sua saída final EXATAMENTE como um objeto JSON com as chaves "classificacao" e "resposta_sugerida". Não adicione nenhum texto ou formatação fora do JSON.
+    Regras obrigatórias:
+    A saída DEVE ser formatada exatamente como um objeto JSON com as chaves "classificacao" e "resposta_sugerida".
+    Não adicione nenhum texto fora do JSON.
+    A resposta sugerida sempre deve estar pronta para ser enviada ao remetente.
+    Seja conciso (1 a 2 frases no máximo).
+
+    Exemplos:
+    E-mail: "Obrigado pela ajuda!"
+    Saída:
+    {"classificacao": "Improdutivo","resposta_sugerida": "Ficamos felizes em ajudar! Atenciosamente."}
+
+    E-mail: "Qual o status do projeto X?"
+    Saída:
+    {"classificacao": "Produtivo","resposta_sugerida": "Prezado(a), recebemos sua solicitação e já estamos verificando o status. Retornaremos o mais breve possível. Atenciosamente."}
+
+    ---
 
     E-mail para analisar:
     ---
